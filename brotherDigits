@@ -1,0 +1,18 @@
+public static boolean compareEnds(int number) {
+    if (number < 0) { // נטפל גם במספרים שליליים
+        number = Math.abs(number);
+    }
+    if (number < 10) { // מספר חד-ספרתי - הספרות שוות
+        return true;
+    }
+
+    int rightmostDigit = number % 10; // הספרה הימנית ביותר
+
+    int leftmostDigit = number;
+    while (leftmostDigit >= 10) { // מזיזים את הספרה השמאלית ביותר למקום היחידות
+        leftmostDigit /= 10;
+    }
+    // כעת leftmostDigit מכיל את הספרה השמאלית ביותר
+
+    return leftmostDigit == rightmostDigit; // השוואת הספרות
+}

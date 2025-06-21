@@ -1,0 +1,13 @@
+public static int sumDigits(int number) {
+    int sum = 0;
+    // נדאג למקרה של מספר שלילי, אם רלוונטי
+    // לדוגמת המבחנים, לרוב מדובר במספרים חיוביים.
+    number = Math.abs(number); // הופך מספר שלילי לחיובי כדי לטפל בספרותיו
+
+    while (number > 0) {
+        int digit = number % 10; // קבל את הספרה הימנית ביותר
+        sum += digit;            // הוסף אותה לסכום
+        number /= 10;            // הסר את הספרה הימנית ביותר
+    }
+    return sum;
+}

@@ -1,0 +1,24 @@
+//classic
+public static int getMax(int[] arr) {
+    int maxVal = arr[0];
+    for (int i = 1; i < arr.length; i++) {
+        if (arr[i] > maxVal) { // התנאי הקלאסי למציאת מקסימום
+            maxVal = arr[i];
+        }
+    }
+    return maxVal;
+}
+
+// althernatively
+public static int getMax (int[] arr)
+{
+    int max = arr[0]; // מניח שהאיבר הראשון הוא התחלתי לחישוב
+    double k1, k2;
+    for (int i = 1; i < arr.length; i++)
+    {
+        k1 = (max + arr[i]) / 2.0;
+        k2 = Math.abs((max - arr[i]) / 2.0);
+        max = (int)(k1 + k2); // כאן m מתעדכן בהתאם לחישוב על m ועל arr[i]
+    }
+    return max;
+}

@@ -1,0 +1,15 @@
+public static double getMedian(int[] arr) {
+    // 1. מיון המערך
+    Arrays.sort(arr); // זו הפעולה המרכזית שחסרה בקבצים לסוג זה של שאלה
+
+    int n = arr.length;
+
+    // 2. קביעת החציון
+    if (n % 2 != 0) { // מספר איברים אי-זוגי
+        return (double) arr[n / 2];
+    } else { // מספר איברים זוגי
+        double mid1 = arr[n / 2 - 1];
+        double mid2 = arr[n / 2];
+        return (mid1 + mid2) / 2.0;
+    }
+}

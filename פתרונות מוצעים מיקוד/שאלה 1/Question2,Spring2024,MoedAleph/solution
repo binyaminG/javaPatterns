@@ -1,0 +1,35 @@
+Scanner scanner = new Scanner(System.in);
+int startsWithCapital = 0;
+int doesNotEndWithDigit = 0;
+String str;
+
+System.out.println("Enter strings (enter a string with length < 6 to stop):");
+
+while (true) {
+    str = scanner.nextLine();
+
+    if (str.length() < 6) {
+        break; // Exit condition
+    }
+
+    if (str.length() % 2 != 0) {
+        if (str.length() > 0) {
+            System.out.println("Odd length string: Middle character: " + str.charAt(str.length() / 2));
+        }
+    }
+
+    if (str.length() > 0) {
+        char firstChar = str.charAt(0);
+        if (firstChar >= 'A' && firstChar <= 'Z') {
+            startsWithCapital++;
+        }
+
+        char lastChar = str.charAt(str.length() - 1);
+        if (!Character.isDigit(lastChar)) {
+            doesNotEndWithDigit++;
+        }
+    }
+} 
+
+System.out.println("Number of strings starting with a capital letter: " + startsWithCapital);
+System.out.println("Number of strings that do not end with a digit: " + doesNotEndWithDigit);

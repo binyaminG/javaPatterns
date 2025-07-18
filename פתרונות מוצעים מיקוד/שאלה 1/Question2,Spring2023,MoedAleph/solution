@@ -1,0 +1,18 @@
+Scanner scanner = new Scanner(System.in);
+int countXWithoutY = 0;
+String str;
+
+System.out.println("Enter strings (enter a string with length > 13 to stop):");
+
+while (true) {
+    str = scanner.nextLine();
+
+    if (str.length() > 13) {
+        break; // Exit condition
+    }
+    
+    if (str.indexOf('X') != -1 && str.indexOf('Y') == -1) {
+        countXWithoutY++;
+    }
+} 
+System.out.println("Number of strings containing 'X' but not 'Y': " + countXWithoutY);

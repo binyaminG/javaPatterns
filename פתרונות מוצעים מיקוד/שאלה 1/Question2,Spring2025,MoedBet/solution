@@ -1,0 +1,23 @@
+Scanner scanner = new Scanner(System.in);
+int oddLengthStrings = 0;
+int evenLengthStrings = 0;
+String str;
+
+System.out.println("Enter strings (enter a string starting and ending with 'Z' to stop):");
+
+while (true) {
+    str = scanner.nextLine();
+    if (str.length() > 0) {
+        if (str.charAt(0) == 'Z' && str.charAt(str.length() - 1) == 'Z') {
+            break; // Exit condition
+        }
+        if (str.length() % 2 == 0) {
+            evenLengthStrings++;
+        } else {
+            oddLengthStrings++;
+        }
+    }
+}
+
+System.out.println("Number of odd-length strings: " + oddLengthStrings);
+System.out.println("Number of even-length strings: " + evenLengthStrings);

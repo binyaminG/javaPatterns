@@ -1,0 +1,27 @@
+Scanner scanner = new Scanner(System.in);
+int startsAndEndsWithDigit = 0;
+String str;
+
+System.out.println("Enter strings (enter an odd-length string to stop):");
+
+do {
+    str = scanner.nextLine();
+
+    if (str.length() > 0) {
+        if (str.indexOf('Z') != -1) {
+            System.out.println("The string \"" + str + "\" contains 'Z'.");
+        } else {
+            System.out.println("The string \"" + str + "\" does not contain 'Z'.");
+        }
+
+        if (Character.isDigit(str.charAt(0)) && Character.isDigit(str.charAt(str.length() - 1))) {
+            startsAndEndsWithDigit++;
+        }
+    }
+
+    if (str.length() % 2 != 0) {
+        break; // Exit condition
+    }
+} while (true);
+
+System.out.println("Number of strings starting and ending with digits: " + startsAndEndsWithDigit);

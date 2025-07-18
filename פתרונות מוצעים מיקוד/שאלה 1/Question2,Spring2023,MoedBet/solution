@@ -1,0 +1,30 @@
+Scanner scanner = new Scanner(System.in);
+int validStringsCount = 0;
+
+System.out.println("Enter 23 strings:");
+
+for (int i = 0; i < 23; i++) {
+    String str = scanner.nextLine();
+    if (str == null || str.length() < 2) { // Need at least 2 A's, so length must be at least 2
+        continue;
+    }
+
+    int countA = 0;
+    for (char c : str.toCharArray()) {
+        if (c == 'A') {
+            countA++;
+        }
+    }
+
+    if (countA < 2) {
+        continue; // Must contain at least two 'A's
+    }
+
+    if (str.contains("AA")) {
+        continue; // Must not contain the sequence "AA"
+    }
+
+    validStringsCount++;
+}
+
+System.out.println("Number of valid strings: " + validStringsCount);

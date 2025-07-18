@@ -1,0 +1,22 @@
+Scanner scanner = new Scanner(System.in);
+int startsOrEndsWithA = 0;
+
+System.out.println("Enter 20 strings:");
+
+for (int i = 0; i < 20; i++) {
+    String str = scanner.nextLine();
+
+    if (str.length() % 2 == 0) {
+        if (str.length() > 0) {
+            System.out.println("Even length string: First char: " + str.charAt(0) + ", Last char: " + str.charAt(str.length() - 1));
+        }
+    }
+
+    if (str.length() > 0) {
+        if (str.charAt(0) == 'A' || str.charAt(str.length() - 1) == 'A') {
+            startsOrEndsWithA++;
+        }
+    }
+}
+
+System.out.println("Number of strings starting or ending with 'A': " + startsOrEndsWithA);

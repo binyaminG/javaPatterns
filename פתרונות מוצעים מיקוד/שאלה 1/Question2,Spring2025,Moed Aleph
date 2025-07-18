@@ -1,0 +1,38 @@
+Scanner scanner = new Scanner(System.in);
+String longestString = "";
+String shortestString = "";
+int startsOrEndsWithCapital = 0;
+
+System.out.println("Enter 30 strings:");
+
+for (int i = 0; i < 30; i++) {
+    String str = scanner.nextLine();
+
+    if (i == 0) {
+        longestString = str;
+        shortestString = str;
+    } else {
+        if (str.length() > longestString.length()) {
+            longestString = str;
+        }
+        if (str.length() < shortestString.length()) {
+            shortestString = str;
+        }
+    }
+
+    if (str.length() > 0) {
+        char firstChar = str.charAt(0);
+        char lastChar = str.charAt(str.length() - 1);
+
+        boolean startsWithCapital = (firstChar >= 'A' && firstChar <= 'Z');
+        boolean endsWithCapital = (lastChar >= 'A' && lastChar <= 'Z');
+
+        if (startsWithCapital || endsWithCapital) {
+            startsOrEndsWithCapital++;
+        }
+    }
+}
+
+System.out.println("Longest string: " + longestString);
+System.out.println("Shortest string: " + shortestString);
+System.out.println("Number of strings starting or ending with a capital letter: " + startsOrEndsWithCapital);

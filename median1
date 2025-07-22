@@ -1,0 +1,30 @@
+/**
+ * פונקציה המקבלת מערך של מספרים שלמים ומחזירה את החציון שלו.
+ *
+ * @param arr מערך של מספרים שלמים.
+ * @return החציון של המערך.
+ * @throws IllegalArgumentException אם המערך ריק או null.
+ */
+public static double findMedian(int[] arr) {
+    //  צור עותק של המערך ומיין אותו
+    // חשוב למיין עותק כדי לא לשנות את המערך המקורי שייתכן ויהיה בשימוש אחר.
+    int[] sortedArr = Arrays.copyOf(arr, arr.length);
+    Arrays.sort(sortedArr); // O(N log N)
+
+    int n = sortedArr.length;
+
+    //  מצא את החציון
+    if (n % 2 == 1) {
+        // אם מספר האיברים אי-זוגי, החציון הוא האיבר האמצעי
+        // (N / 2) נותן את האינדקס האמצעי עבור מערך ממוין עם אינדקסים מ-0
+        return sortedArr[n / 2]; // O(1)
+    } else {
+        // אם מספר האיברים זוגי, החציון הוא ממוצע שני האיברים האמצעיים
+        int mid1 = sortedArr[n / 2 - 1]; // O(1)
+        int mid2 = sortedArr[n / 2];     // O(1)
+        return (double) (mid1 + mid2) / 2.0; // O(1)
+    }
+}
+
+סיבוכיות
+O(nlogn)

@@ -1,0 +1,17 @@
+public static int getBalancePoint(int [] arr){
+    int balance = -1;
+    for(int i = 1; i < arr.length-1; i++){
+        int left = 1;
+        for(int j = 0; j < i; j++){
+            left *= arr[j];
+        }
+        int right = 1;
+        for(int j = i+1; j < arr.length; j++){
+            right *= arr[j];
+        }
+        if(left == right){
+            balance = i;
+        }
+    }
+    return balance;
+}

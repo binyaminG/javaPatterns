@@ -1,0 +1,50 @@
+a.
+public Warehouse() {
+    this.flags = new Flag[100];
+    this.quantities = new int[100];
+    this.currentFlags=0;
+}
+
+b.
+public void add(String country, int length, int width, int quant) {
+    for (int i = 0; i <= this.currentFlags; i++) {
+        if (this.flags[i].getCountry() == country
+                && this.flags[i].getLength() == length
+                && this.flags[i].getWidth() == width) {
+            this.quantities[i] += quant;
+            break;
+        } else if (currentFlags==100) {
+            System.out.println("no space in warehouse");
+        }
+        else
+        {
+            currentFlags++;
+            this.flags[this.currentFlags] = new Flag(country, length, width);
+            this.quantities[this.currentFlags] = quant;
+            
+        }
+    }
+}
+
+c. 
+public void flagsWithMinQuantity(int minQuality) {
+    for (int i = 0; i < this.currentFlags; i++) {
+        if (this.quantities[i] < minQuality) {
+            System.out.println(this.flags[i]);
+        }
+    }
+}
+
+
+d.
+public void printFlags(String[] countries) {
+  for (int i = 0; i < countries.length; i++) {
+      int sumQnt=0;
+      for (int j = 0; j < this.currentFlags; j++) {
+          if (this.flags[j].getCountry() == countries[i]) {
+              sumQnt+=this.quantities[j];
+          }
+      }
+      System.out.println("Quantity flags of "+countries[i]+" is "+sumQnt);
+  }
+}

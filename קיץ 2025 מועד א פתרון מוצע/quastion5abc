@@ -1,0 +1,34 @@
+a.
+public static boolean isPrimary(int num){
+    for (int i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+b.
+public static int countPrimaryPairs(int num){
+  int count = 0;
+  for (int i = 1; i <=num/2; i++) {
+      if (isPrimary(i) && isPrimary(num-i)){
+          count++;
+      }
+  }
+  return count;
+}
+
+c. 
+public static int[] allPrimaryPairs(int num){
+    int k = 0;
+    int [] allPairs = new int[2*countPrimaryPairs(num)];
+    for (int i = 1; i <= num/2; i++) {
+        if (isPrimary(i) && isPrimary(num-i)){
+            allPairs[k]=i;
+            allPairs[k+1]=num-i;
+            k+=2;
+        }
+    }
+    return allPairs;
+}

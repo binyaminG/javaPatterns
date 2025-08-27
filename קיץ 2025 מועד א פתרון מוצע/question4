@@ -1,0 +1,45 @@
+a. 
+public int getSalary() {
+    int salary = 0;
+    if (status == 1) {
+        salary = 150*hours;
+    }
+    else {
+        salary = 70*hours;
+    }
+    if (hours > 160){
+        salary += 70*(hours-160);
+    }
+    return salary;
+}
+
+b. 
+Scanner in = new Scanner(System.in);
+int s = 0;
+String n = in.nextLine();
+int t = in.nextInt();
+Employee emp= new Employee(n,t);
+for(int i = 0; i < 25; i++){
+    int a = in.nextInt();
+    int b = in.nextInt();
+    s= b-a;
+}
+emp.setHours(s);
+System.out.println(emp.getSalary());
+
+c.
+public static void getHighestSalaries(Employee[] employees) {
+int sumEng=0, cntEng=0;
+for (int i = 0; i < employees.length; i++) {
+    if (employees[i].getStatus()==1) {
+        sumEng += employees[i].getSalary();
+        cntEng++;
+    }
+}
+int avgEng=sumEng/cntEng;
+for (int i = 0; i < employees.length; i++) {
+    if (employees[i].getStatus()==2 && employees[i].getSalary()>avgEng) {
+        System.out.println(employees[i].getId());
+    }
+}
+}

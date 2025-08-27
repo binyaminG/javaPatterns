@@ -1,0 +1,20 @@
+public static String manipulateText(String s){
+    // remove all spaces
+    s=s.replace(" ","");
+
+    //reverse all pair of chars
+    String temp="";
+    for (int i = 1; i < s.length()-1; i+=2) {
+        temp += String.valueOf(s.charAt(i))+String.valueOf(s.charAt(i-1));
+        if(i==s.length()-2) {
+            temp+=String.valueOf(s.charAt(i+1));
+        }
+    }
+    s=temp;
+    //reverse all string
+    temp="";
+    for (int i = s.length()-1; i >= 0; i--) {
+        temp += String.valueOf(s.charAt(i));
+    }
+    return temp;
+}

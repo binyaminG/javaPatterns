@@ -1,0 +1,69 @@
+a. 
+public Account(String username, String currentPass) {
+    this.username = username;
+    this.currentPass = currentPass;
+    this.passHistory = new String[10];
+    this.passHistory[0] = currentPass;
+}
+
+b. 
+public boolean isPasswordValid(String password) {
+    if (password.length() < 8) {
+        return false;
+    }
+    int cnt_let=0, cnt_dig=0, cnt_special=0;
+    for(int i=0;i<password.length();i++) {
+        if(i<password.length()-1 && password.charAt(i)==password.charAt(i+1)) {
+            return false;
+        }
+        if(password.charAt(i)>='0'&&password.charAt(i)<='9') {
+            cnt_let++;
+        }
+        else if(password.charAt(i)>='A'&&password.charAt(i)<='Z') {
+            cnt_dig++;
+        }
+        else if(password.charAt(i)<'0'
+                ||(password.charAt(i)>'9'&&password.charAt(i)<'A')
+                ||(password.charAt(i)>'Z'&&password.charAt(i)<'a')
+                ||password.charAt(i)=='z') {
+            cnt_special++;
+        }
+
+    }
+    if(cnt_let<2||cnt_dig==0||cnt_special==0) {
+        return false;
+    }
+    return true;
+}
+
+c. 
+public void updatePassword(String password) {
+    if(isPasswordValid(password)) {
+        this.currentPass = password;
+        for(int i= passHistory.length-1;i>0;i--) {
+            passHistory[i] = passHistory[i-1];
+        }
+        passHistory[0]=password;
+    }
+    else {
+        System.out.println("Invalid Password");
+    }
+}
+
+d.
+public void addUser(String username, String password) {
+    boolean isExist = false;
+    for (int i = 0; i < this.accounts.length; i++) {
+        if (accounts[i].getUsername().equals(username)) {
+            isExist = true;
+            System.out.println("passwor is exist");
+        }
+    }
+    if (!isExist&&numOfAccounts<100) {
+        Account newAccount = new Account(username, password);
+        accounts[numOfAccounts] = newAccount;
+        numOfAccounts++;
+    }
+}
+
+e.
